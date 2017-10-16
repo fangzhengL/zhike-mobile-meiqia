@@ -1,0 +1,6 @@
+use_frameworks!
+target 'zhike-mobile-meiqia_Tests' do
+  pod 'zhike-mobile-meiqia', :path => '../'
+  
+  
+end

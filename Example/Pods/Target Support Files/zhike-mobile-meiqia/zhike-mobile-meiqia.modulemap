@@ -1,0 +1,6 @@
+framework module zhike_mobile_meiqia {
+  umbrella header "zhike-mobile-meiqia-umbrella.h"
+
+  export *
+  module * { export * }
+}
