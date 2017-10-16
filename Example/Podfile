@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'zhike-mobile-meiqia_Example' do
+  pod 'zhike-mobile-meiqia', :path => '../'
+
+  target 'zhike-mobile-meiqia_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
