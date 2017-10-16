@@ -1,0 +1,30 @@
+PODS:
+  - Masonry (1.1.0)
+  - Meiqia (3.4.2):
+    - Meiqia/MeiqiaSDK (= 3.4.2)
+    - Meiqia/MQChatViewController (= 3.4.2)
+  - Meiqia/MeiqiaSDK (3.4.2)
+  - Meiqia/MQChatViewController (3.4.2):
+    - Meiqia/MeiqiaSDK
+  - zhike-mobile-meiqia (0.1.0):
+    - Meiqia (~> 3.4.2)
+    - ZKUIKit (~> 0.1.10)
+  - ZKUIKit (0.1.10):
+    - Masonry
+
+DEPENDENCIES:
+  - zhike-mobile-meiqia (from `../`)
+
+EXTERNAL SOURCES:
+  zhike-mobile-meiqia:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  Meiqia: 788120975536c4cfb84315d830344516420242b2
+  zhike-mobile-meiqia: b8c1cc336416453b764bb04257c7d2f637a95883
+  ZKUIKit: f6fbbb23e0f62821845bdfa901cbbbe9fafb770c
+
+PODFILE CHECKSUM: b0b0b139bd239b139f3cd8af3bfeb41aeee78afb
+
+COCOAPODS: 1.3.1

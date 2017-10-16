@@ -1,0 +1,30 @@
+{
+  "name": "zhike-mobile-meiqia",
+  "version": "0.1.0",
+  "summary": "A short description of zhike-mobile-meiqia.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/bestofsong/zhike-mobile-meiqia",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "bestofsong": "betterofsong@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/bestofsong/zhike-mobile-meiqia.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "zhike-mobile-meiqia/Classes/**/*",
+  "dependencies": {
+    "ZKUIKit": [
+      "~> 0.1.10"
+    ],
+    "Meiqia": [
+      "~> 3.4.2"
+    ]
+  }
+}
