@@ -4,7 +4,8 @@ import {
   NativeModules,
   Platform,
 } from 'react-native';
-import ZKCookieManager from 'zhike-cookie-manager';
+import { getCookie } from 'zhike-cookie-manager';
+import { parseCpsInfoStr } from 'ss-cps-info';
 const { ZKMeqiaBasicChatManager } = NativeModules;
 
 type AnyFunc = (...args: Array<any>) => any;
@@ -15,8 +16,13 @@ export function initMeqiaWithKey(key: string, callback?: AnyFunc = noop) {
 }
 
 export function showMeiqiaMessageView(groupId:number | string, ctx?: Object = {}, callback?: AnyFunc = noop) {
-  ZKCookieManager.getCookieUUID((error, uuid) => {
-    uuid = (typeof uuid === 'string' || error) ? uuid.replace(/-/g, '') : '';
-    ZKMeqiaBasicChatManager.showChatView(uuid, groupId, ctx, callback);
+  getCookie('cpsInfo')
+  .then((cpsInfoStr) => {
+    return parseCpsInfoStr(cpsInfoStr).cookie_id;
+  })
+  .catch(() => '')
+  .then((uuid) => {
+    const fixedUUID = (typeof uuid === 'string') ? uuid.replace(/-/g, '') : '';
+    ZKMeqiaBasicChatManager.showChatView(fixedUUID, groupId, ctx, callback);
   });
 }
