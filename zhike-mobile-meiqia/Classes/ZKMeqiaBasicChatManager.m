@@ -8,6 +8,7 @@
 
 #import "ZKMeqiaBasicChatManager.h"
 #import "UIViewController+Utility.h"
+#import <Masonry.h>
 
 #import "MQChatViewManager.h"
 #import "MQChatDeviceUtil.h"
@@ -62,10 +63,41 @@ RCT_EXPORT_METHOD(showChatView:(NSString*)clientId
       [chatViewManager setLoginCustomizedId:clientId ?: @""];
     }
     [chatViewManager setScheduledGroupId:groupId];
-    //    [chatViewManager setPreSendMessages:@[@"message1"]];
-    //   [chatViewManager setScheduledAgentId:@"f60d269236231a6fa5c1b0d4848c4569"];
-    //[chatViewManager setScheduleLogicWithRule:MQChatScheduleRulesRedirectNone];
-    //    [chatViewManager.chatViewStyle setEnableOutgoingAvatar:YES];
+    
+          //设置时间输出格式：
+      NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+      [df setDateFormat:@"yyyy年MM月dd日"];
+      NSString * na = [df stringFromDate:currentDate];
+      
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      BOOL hasRan = [defaults boolForKey:na];
+
+      if (!userInfo) {
+          
+      }else if(!hasRan){
+          [defaults setBool:YES forKey:na];
+          UIWindow *win = [UIApplication sharedApplication].keyWindow;
+          UIView *view = [[UIView alloc] init];
+          view.frame = [UIScreen mainScreen].bounds;
+          view.backgroundColor = [UIColor blackColor];
+          view.alpha = 0.5;
+          UIImageView *imgV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toast"]];
+          [imgV sizeToFit];
+          [win addSubview:view];
+          [win addSubview:imgV];
+          [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+              make.centerX.equalTo(view);
+              make.centerY.equalTo(view).offset(-50);
+          }];
+          
+          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              [view removeFromSuperview];
+              [imgV removeFromSuperview];
+          });
+      }
+
+    
+    
     [chatViewManager setRecordMode:MQRecordModeDuckOther];
     [chatViewManager setPlayMode:MQPlayModeMixWithOther];
     
