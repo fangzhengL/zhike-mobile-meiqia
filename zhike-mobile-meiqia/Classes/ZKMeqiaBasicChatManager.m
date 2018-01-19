@@ -64,6 +64,11 @@ RCT_EXPORT_METHOD(showChatView:(NSString*)clientId
     }
     [chatViewManager setScheduledGroupId:groupId];
     
+      NSDate * date = [NSDate date];
+      NSTimeInterval sec = [date timeIntervalSinceNow];
+      NSDate * currentDate = [[NSDate alloc] initWithTimeIntervalSinceNow:sec];
+
+    
           //设置时间输出格式：
       NSDateFormatter * df = [[NSDateFormatter alloc] init ];
       [df setDateFormat:@"yyyy年MM月dd日"];
