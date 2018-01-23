@@ -74,11 +74,14 @@ RCT_EXPORT_METHOD(showChatView:(NSString*)clientId
       [df setDateFormat:@"yyyy年MM月dd日"];
       NSString * na = [df stringFromDate:currentDate];
       
+      if (userInfo != nil)  {
+          na = [na stringByAppendingString: [NSString stringWithFormat:@"%@", userInfo[@"userId"]]];
+      }
+      
       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
       BOOL hasRan = [defaults boolForKey:na];
 
       if (!userInfo) {
-          
       }else if(!hasRan){
           [defaults setBool:YES forKey:na];
           UIWindow *win = [UIApplication sharedApplication].keyWindow;
@@ -121,3 +124,4 @@ RCT_EXPORT_METHOD(showChatView:(NSString*)clientId
 }
 
 @end
+
