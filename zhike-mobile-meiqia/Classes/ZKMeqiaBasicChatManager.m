@@ -63,27 +63,8 @@ RCT_EXPORT_METHOD(showChatView:(NSString*)clientId
       [chatViewManager setLoginCustomizedId:clientId ?: @""];
     }
     [chatViewManager setScheduledGroupId:groupId];
-    
-      NSDate * date = [NSDate date];
-      NSTimeInterval sec = [date timeIntervalSinceNow];
-      NSDate * currentDate = [[NSDate alloc] initWithTimeIntervalSinceNow:sec];
 
-    
-          //设置时间输出格式：
-      NSDateFormatter * df = [[NSDateFormatter alloc] init ];
-      [df setDateFormat:@"yyyy年MM月dd日"];
-      NSString * na = [df stringFromDate:currentDate];
-      
-      if (userInfo != nil)  {
-          na = [na stringByAppendingString: [NSString stringWithFormat:@"%@", userInfo[@"userId"]]];
-      }
-      
-      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-      BOOL hasRan = [defaults boolForKey:na];
-
-      if (!userInfo) {
-      }else if(!hasRan){
-          [defaults setBool:YES forKey:na];
+      if (userInfo && userInfo[@"showMeiQ"]) {
           UIWindow *win = [UIApplication sharedApplication].keyWindow;
           UIView *view = [[UIView alloc] init];
           view.frame = [UIScreen mainScreen].bounds;
@@ -124,4 +105,3 @@ RCT_EXPORT_METHOD(showChatView:(NSString*)clientId
 }
 
 @end
-
