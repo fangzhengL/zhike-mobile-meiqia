@@ -64,7 +64,7 @@ RCT_EXPORT_METHOD(showChatView:(NSString*)clientId
     }
     [chatViewManager setScheduledGroupId:groupId];
 
-      if (userInfo && userInfo[@"showMeiQ"]) {
+      if (userInfo && [userInfo[@"showMeiQ"] isEqualToString:@"1"]) {
           UIWindow *win = [UIApplication sharedApplication].keyWindow;
           UIView *view = [[UIView alloc] init];
           view.frame = [UIScreen mainScreen].bounds;
